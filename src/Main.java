@@ -49,13 +49,13 @@ public class Main {
         double sinFromLibrary = Math.sin(radian);
         System.out.println("Library: " + sinFromLibrary);
         System.out.println("Calculated: " + calculateSin(radian));
-        System.out.println("Difference: " + Math.abs(calculateSin(radian) - sinFromLibrary));
+        System.out.println("Err: " + Math.abs(calculateSin(radian) - sinFromLibrary));
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter:\n- 1 for x in radians\n- 2 for x in degrees\n\nChoice: ");
+        System.out.print("Enter:\n- 1 for x in degrees\n- 2 for x in radians\n\nChoice: ");
         int choice = scanner.nextInt();
 
         System.out.print("Enter x: ");
