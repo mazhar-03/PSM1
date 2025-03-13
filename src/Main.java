@@ -17,17 +17,21 @@ public class Main {
     public static double normalizeAngle(double value) {
         double normalizedValue = value % (2 * Math.PI);
 
-        if (0 < normalizedValue && normalizedValue <= (Math.PI / 2)) {
+        if (normalizedValue < 0) {
+            normalizedValue += 2 * Math.PI;
+        }
+
+        if (normalizedValue <= Math.PI / 2) {
             return normalizedValue;
-        } else if ((Math.PI / 2) < normalizedValue && normalizedValue <= Math.PI) {
+        } else if (normalizedValue <= Math.PI) {
             return Math.PI - normalizedValue;
-        } else if (Math.PI < normalizedValue && normalizedValue <= (3 * (Math.PI / 2))) {
+        } else if (normalizedValue <= 3 * Math.PI / 2) {
             return Math.PI - normalizedValue;
         } else {
-            normalizedValue = (2 * Math.PI) - normalizedValue;
-            return normalizedValue - (2 * Math.PI);
+            return normalizedValue - 2 * Math.PI;
         }
     }
+
 
     public static double calculateSin(double value) {
         value = normalizeAngle(value);
@@ -52,6 +56,7 @@ public class Main {
         System.out.println("Err: " + Math.abs(calculateSin(radian) - sinFromLibrary));
     }
 
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -62,9 +67,9 @@ public class Main {
         double x = scanner.nextDouble();
 
         if (choice == 1) {
-            calculateAndPrintSin(x, false);
-        } else if (choice == 2) {
             calculateAndPrintSin(x, true);
+        } else if (choice == 2) {
+            calculateAndPrintSin(x, false);
         } else {
             System.out.println("Invalid option - please try again!");
         }
